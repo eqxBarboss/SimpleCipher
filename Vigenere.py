@@ -17,7 +17,7 @@ def GetLetter(ch, delta):
     return AlphRus[index]
         
 
-def CipherVigenere(InputFileName, OutputFileName, key):
+def EncipherVigenere(InputFileName, OutputFileName, key):
 
     inF = open(InputFileName)
     s = inF.read()
@@ -55,7 +55,7 @@ def CipherVigenere(InputFileName, OutputFileName, key):
     return
 
 
-def EncipherVigenere(InputFileName, OutputFileName, key):
+def DecipherVigenere(InputFileName, OutputFileName, key):
     
     inF = open(InputFileName)
     s = inF.read()

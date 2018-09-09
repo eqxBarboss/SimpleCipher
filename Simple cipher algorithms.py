@@ -38,12 +38,12 @@ class MainWindow(QWidget):
         self.combo.activated[int].connect(self.onActivated)
 
 
-        btnCipher = QPushButton('Cipher')
-        btnCipher.clicked.connect(self.cipherClicked)
+        btnCipher = QPushButton('Encipher')
+        btnCipher.clicked.connect(self.EncipherClicked)
 
 
-        btnEncipher = QPushButton('Encipher')
-        btnEncipher.clicked.connect(self.encipherClicked)
+        btnEncipher = QPushButton('Decipher')
+        btnEncipher.clicked.connect(self.DecipherClicked)
 
 
         grid.addWidget(self.combo, 1, 0, 1, 2)
@@ -71,22 +71,22 @@ class MainWindow(QWidget):
     def onActivated(self, index):
 
         if index == 0:
-            self.CipherProc = RailFence.CipherRailFence
             self.EncipherProc = RailFence.EncipherRailFence
+            self.DecipherProc = RailFence.DecipherRailFence
             self.FileMask = AlphEng
             self.CheckKeyFunc = CheckData.CheckDigitsPositiveStr
             self.keyEdit.setEnabled(True)
             self.keyEdit.setPlaceholderText('Decimal key required...')
         elif index == 1:
-            self.CipherProc = Grille.CipherGrille
             self.EncipherProc = Grille.EncipherGrille
+            self.DecipherProc = Grille.DecipherGrille
             self.FileMask = AlphEng
             self.CheckKeyFunc = CheckData.CheckNothing
             self.keyEdit.setEnabled(False)
             self.keyEdit.setPlaceholderText('No key required.')
         elif index == 2:
-            self.CipherProc = Vigenere.CipherVigenere
             self.EncipherProc = Vigenere.EncipherVigenere
+            self.DecipherProc = Vigenere.DecipherVigenere
             self.FileMask = AlphRus
             self.CheckKeyFunc = CheckData.CheckRusStr
             self.keyEdit.setEnabled(True)
@@ -107,16 +107,16 @@ class MainWindow(QWidget):
         return False
 
 
-    def cipherClicked(self):
-
-        if self.isPrepared():
-            self.CipherProc(InputFileName, OutputFileName, self.keyEdit.text())
-
-
-    def encipherClicked(self):
+    def EncipherClicked(self):
 
         if self.isPrepared():
             self.EncipherProc(InputFileName, OutputFileName, self.keyEdit.text())
+
+
+    def DecipherClicked(self):
+
+        if self.isPrepared():
+            self.DecipherProc(InputFileName, OutputFileName, self.keyEdit.text())
 
 
 

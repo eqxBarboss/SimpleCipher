@@ -38,7 +38,7 @@ def GetLinearGrille(Grille):
     return linearMatr
 
 
-def CipherGrille(InputFileName, OutputFileName, key):
+def EncipherGrille(InputFileName, OutputFileName, key):
 
     inF = open(InputFileName)
     s = inF.read()
@@ -81,7 +81,7 @@ def CipherGrille(InputFileName, OutputFileName, key):
     return
 
 
-def EncipherGrille(InputFileName, OutputFileName, key):
+def DecipherGrille(InputFileName, OutputFileName, key):
     
     inF = open(InputFileName)
     s = inF.read()

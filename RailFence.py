@@ -1,7 +1,7 @@
 AlphEng = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 
 
-def CipherRailFence(InputFileName, OutputFileName, key):
+def EncipherRailFence(InputFileName, OutputFileName, key):
 
     inF = open(InputFileName)
     s = inF.read()
@@ -40,7 +40,7 @@ def CipherRailFence(InputFileName, OutputFileName, key):
     return
 
 
-def EncipherRailFence(InputFileName, OutputFileName, key):
+def DecipherRailFence(InputFileName, OutputFileName, key):
     
     inF = open(InputFileName)
     s = inF.read()
