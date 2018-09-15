@@ -106,7 +106,7 @@ class MainWindow(QWidget):
             QMessageBox.warning(self, 'Message', "Invalid key!" + "\n" + "Please, try again.", QMessageBox.Ok)
         return False
 
-
+   
     def EncipherClicked(self):
 
         if self.isPrepared():
