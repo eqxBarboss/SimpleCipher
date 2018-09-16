@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import (QWidget, QLabel, QLineEdit,
     QTextEdit, QGridLayout, QApplication, QPushButton,
     QDesktopWidget, QComboBox, QMessageBox)
 
-import RailFence, Grille, Vigenere, CheckData
+import RailFence, Grille, Vigenere, CheckData, Kasiski
 
 
 AlphEng = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
@@ -46,11 +46,16 @@ class MainWindow(QWidget):
         btnEncipher.clicked.connect(self.DecipherClicked)
 
 
-        grid.addWidget(self.combo, 1, 0, 1, 2)
-        grid.addWidget(keyLabel, 2, 0)
-        grid.addWidget(self.keyEdit, 2, 1, 1, 1)
-        grid.addWidget(btnCipher, 3, 0)
-        grid.addWidget(btnEncipher, 3, 1)
+        btnKasiski = QPushButton('Kasiski test')
+        btnKasiski.clicked.connect(self.KasiskiClicked)
+
+
+        grid.addWidget(self.combo, 1, 0, 1, 10)
+        grid.addWidget(keyLabel, 2, 0, 1, 1)
+        grid.addWidget(self.keyEdit, 2, 1, 1, 9)
+        grid.addWidget(btnCipher, 4, 0, 1, 5)
+        grid.addWidget(btnEncipher, 4, 5, 1, 5)
+        grid.addWidget(btnKasiski, 3, 0, 1, 10)
         self.setLayout(grid)
 
 
@@ -117,6 +122,13 @@ class MainWindow(QWidget):
 
         if self.isPrepared():
             self.DecipherProc(InputFileName, OutputFileName, self.keyEdit.text())
+
+
+    def KasiskiClicked(self):
+        if CheckData.CheckFile(InputFileName, AlphRus):
+            Kasiski.KasiskiTest(InputFileName, OutputFileName)    
+        else:
+            QMessageBox.warning(self, 'Message', "Input error occurred!" + "\n" + "Please, try again.", QMessageBox.Ok)      
 
 
 
